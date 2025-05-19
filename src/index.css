@@ -1,0 +1,147 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-neon-violet/20 selection:text-white;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased overflow-x-hidden font-sans;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_8px_32px_rgba(139,92,246,0.2)];
+  }
+  
+  .neon-border {
+    @apply relative;
+  }
+  
+  .neon-border::after {
+    content: '';
+    @apply absolute inset-0 rounded-lg border border-neon-violet opacity-50 blur-[1px] transition-all duration-300;
+    z-index: -1;
+  }
+  
+  .neon-border:hover::after {
+    @apply opacity-100 blur-[2px];
+  }
+
+  .neon-glow {
+    @apply relative;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5), 0 0 20px rgba(139, 92, 246, 0.3), 0 0 30px rgba(139, 92, 246, 0.1);
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-neon-blue via-neon-violet to-neon-cyan bg-clip-text text-transparent;
+  }
+
+  .blob {
+    @apply absolute rounded-full filter blur-3xl opacity-20;
+    background: linear-gradient(180deg, rgba(139,92,246,0.7) 0%, rgba(33,195,240,0.7) 100%);
+  }
+
+  .rotate-x {
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(var(--rotate-x, 0deg));
+  }
+  
+  .rotate-y {
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0deg));
+  }
+  
+  .badge-glow {
+    @apply inline-flex items-center justify-center px-3 py-1 text-xs font-medium rounded-full bg-secondary text-foreground transition-all duration-300;
+    box-shadow: 0 0 5px rgba(139, 92, 246, 0.5);
+  }
+  
+  .badge-glow:hover {
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
+  }
+}
+
+/* For the tech stack animation */
+.tech-carousel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 2rem;
+}
+
+.tech-carousel-items {
+  display: flex;
+  flex-direction: column;
+  animation: carousel 10s linear infinite;
+}
+
+@keyframes carousel {
+  0%, 20% {
+    transform: translateY(0);
+  }
+  25%, 45% {
+    transform: translateY(-100%);
+  }
+  50%, 70% {
+    transform: translateY(-200%);
+  }
+  75%, 95% {
+    transform: translateY(-300%);
+  }
+  100% {
+    transform: translateY(-400%);
+  }
+}
