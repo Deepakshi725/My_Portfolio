@@ -1,4 +1,3 @@
-
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -10,7 +9,7 @@ const About = () => {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden border-2 border-neon-violet/20">
               <img 
-                src="https://placehold.co/600x500/1f1f23/ffffff?text=Profile+Image" 
+                src="/projects/profile_pic/myself.jpg" 
                 alt="Deepakshi Sharma" 
                 className="w-full h-auto max-h-[500px] object-cover"
               />
